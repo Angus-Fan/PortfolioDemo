@@ -1,5 +1,7 @@
 # PortfolioDemo
-My portfolio uses Three.js to load and render 3D models, you can take a look by following this [link](https://angus-fan.netlify.app/).
+My portfolio uses Three.js to load and render 3D models, you can take a look by following this **[link](https://angus-fan.netlify.app/)**.
+
+
 This repository is for demonstration purposes only, I will not be releasing the full code for my portfolio. However I will give snippets of code and mention how I did certain aspects of the website below. If you're wondering how this relates to the HTML code the javascript uses Three.js and outputs the render to the canvas element found in the HTML.
 
 ## Movement
@@ -63,8 +65,9 @@ const update = () => {
   window.requestAnimationFrame(update);
 };
 update();
-
 ```
+It all comes together to allow the player to move around the map.
+
 ![walk](https://user-images.githubusercontent.com/33101170/142565939-ac64f44d-efbd-4865-87bc-a565d50d70a4.gif)
 
 ## Interactions
