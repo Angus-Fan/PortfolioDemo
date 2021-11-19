@@ -1,0 +1,222 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+.uiButton {
+  position: relative;
+  height: 75px;
+  width: 75px;
+  margin: 10px;
+  transform-origin: center;
+  filter: drop-shadow(3px 3px 1px #000000);
+}
+
+.uiButton:hover {
+  animation: sway 1s ease-in-out infinite alternate;
+}
+.uiButton:active {
+  filter: brightness(50%) drop-shadow(3px 3px 1px #000000);
+}
+.uiInteract {
+  background-size: cover;
+  transform-origin: center;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+  width: 25vw;
+  bottom: 3vh;
+  right: 6vw;
+  z-index: 2;
+}
+
+.uiCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+  z-index: 1;
+  font-family: "Arsenal", sans-serif;
+  transform-origin: bottom right;
+}
+
+.uiCanvasContainer {
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  outline: none;
+  z-index: 2;
+  transform-origin: bottom right;
+}
+
+.uiCanvasText {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: left;
+  padding-right: 10px;
+  height: 40vh;
+  width: 25vw;
+  bottom: 25vh;
+  right: 7vw;
+  z-index: 2;
+  font-family: "Arsenal", sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  overflow: auto;
+}
+@keyframes UIEnter {
+  0% {
+    transform: rotate(-80deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+  /*Right to Left Rotate
+  0% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(75deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }*/
+}
+@keyframes UIExit {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(-45deg);
+  }
+  100% {
+    transform: rotate(-80deg);
+  }
+}
+@keyframes sway {
+  0% {
+    transform: rotate(5deg) scale(1.1);
+  }
+  100% {
+    transform: rotate(-5deg) scale(1.1);
+  }
+}
+.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  outline: none;
+}
+
+.loading-bar {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #000000;
+  z-index: 3;
+  opacity: 100;
+  transition: opacity 0.5s;
+  transform-origin: top left;
+  will-change: transform;
+}
+
+.loading-bar.ended {
+  opacity: 0;
+  transform-origin: top right;
+  transition: opacity 1s ease-in;
+}
+
+.fastTravelBar {
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  transform-origin: center;
+  bottom: 5vh;
+  width: 60vw;
+  height: 5vh;
+  margin-left: 20%;
+  margin-right: 10%;
+  opacity: 0%;
+  transition: opacity 0.25s ease-in;
+}
+.mapBackground {
+  width: 100%;
+  height: 100%;
+}
+.mapMarker {
+  position: absolute;
+  transform-origin: center;
+  bottom: 75%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 25px;
+  height: 25px;
+}
+.mapLabel {
+  position: relative;
+  transform-origin: center;
+  pointer-events: none;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+  width: 120px;
+  height: 60px;
+  opacity: 0%;
+  transition: opacity 0.25s ease-in;
+}
+
+.mapButtonContainer {
+  position: absolute;
+  transform-origin: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 25px;
+  height: 25px;
+}
+.mapButton {
+  position: absolute;
+  transform-origin: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 25px;
+  height: 25px;
+}
+
+.mapButtonContainer:hover .mapLabel {
+  opacity: 100%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #1f2d34;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #4e8eac;
+}
