@@ -1,9 +1,33 @@
 # PortfolioDemo
+My portfolio uses Three.js to load and render 3D models, you can take a look by following this [link](https://angus-fan.netlify.app/).
 This repository is for demonstration purposes only, I will not be releasing the full code for my portfolio. However I will give snippets of code and mention how I did certain aspects of the website below. If you're wondering how this relates to the HTML code the javascript uses Three.js and outputs the render to the canvas element found in the HTML.
 
 ## Movement
-Movement of the character is very simple, it's just an event listener on the window which listens for movement key input. If movement is detected then the we can move our call our **updatePlayerMovement()** function within our **tick()** function. 
+Movement of the character is very simple, it's just an event listener on the window which listens for movement key input. If movement is detected then we can move our character by calling our **playerMovement()** function and **updatePlayerMovement()** function within our **update()** function. If you're familiar with Unity (or any other game engine) this is pretty much listening for key inputs in a game update loop.
 
+### Player Movement Function
+```javascript
+const playerMovement = () => {
+  if (heldKeys.Shift) {
+    playerMovementRunSpeed = 2.5;
+  } else {
+    playerMovementRunSpeed = 1;
+  }
+  if (
+    (heldKeys.UpVerti || heldKeys.UpHori) &&
+    (heldKeys.DownVerti || heldKeys.DownHori)
+  ) {
+    playerMovementDirection = 0;
+  } else if (heldKeys.UpVerti || heldKeys.UpHori) {
+    playerMovementDirection = -1 * playerMovementSpeed * playerMovementRunSpeed;
+  } else if (heldKeys.DownVerti || heldKeys.DownHori) {
+    playerMovementDirection = 1 * playerMovementSpeed * playerMovementRunSpeed;
+  } else {
+    playerMovementDirection = 0;
+  }
+};
+```
+### Update Player Movement Function
 ```javascript
 const updatePlayerMovement = (deltaTime) => {
   if (
@@ -27,6 +51,19 @@ const updatePlayerMovement = (deltaTime) => {
   }
   updateMap(Math.abs(playerGroup.position.z - lowerMapLimit) / mapSize);
 };
+```
+### Update Function
+
+ ```javascript
+const update = () => {
+  const deltaTime = clock.getDelta();  
+  playerMovement();
+  updatePlayerMovement(deltaTime);
+  renderer.render(scene, camera);
+  window.requestAnimationFrame(update);
+};
+update();
+
 ```
 ![walk](https://user-images.githubusercontent.com/33101170/142565939-ac64f44d-efbd-4865-87bc-a565d50d70a4.gif)
 
